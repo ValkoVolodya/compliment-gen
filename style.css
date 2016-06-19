@@ -1,0 +1,104 @@
+/*
+  Style for heading
+*/
+.header{
+  font-family: times, Times New Roman, times-roman, georgia, serif;
+	font-size: 48px;
+	line-height: 40px;
+	letter-spacing: -1px;
+	color: #444;
+	margin: 30px 0 0 0;
+	padding: 0 0 0 0;
+  font-weight: 100;
+  text-align: center;
+}
+
+/*
+  Styles for container
+*/
+.container{
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  text-align: center;
+}
+
+/*
+  Styles for text input
+*/
+input[type="text"] {
+  display: block;
+  margin: 0;
+  width: 100%;
+  font-family: "Bitter",serif;
+  font-size: 22px;
+  appearance: none;
+  box-shadow: none;
+  border-radius: none;
+}
+
+input[type="text"]:focus {
+  outline: none;
+}
+
+.glow input[type="text"] {
+  padding: 10px;
+  border: solid 1px gainsboro;
+  -webkit-transition: box-shadow 0.3s, border 0.3s;
+  -moz-transition: box-shadow 0.3s, border 0.3s;
+  -o-transition: box-shadow 0.3s, border 0.3s;
+  transition: box-shadow 0.3s, border 0.3s;
+}
+.glow input[type="text"]:focus, .glow input[type="text"].focus {
+  border: solid 1px #707070;
+  -webkit-box-shadow: 0 0 5px 1px #969696;
+  -moz-box-shadow: 0 0 5px 1px #969696;
+  box-shadow: 0 0 5px 1px #969696;
+}
+
+
+/*
+  Style for button
+*/
+button {
+  display: inline-block;
+  margin: 20px 10px 0 10px;
+  width: 100%;
+  padding: 15px 45px;
+  font-size: 22px;
+  font-family: "Bitter",serif;
+  line-height: 1.8;
+  vertical-align: bottom;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+
+button:focus {
+  outline: none
+}
+
+.flat button {
+  color: #fff;
+  background-color: #6496c8;
+  text-shadow: -1px 1px #417cb8;
+  border: none;
+}
+
+.flat button:hover,
+.flat button.hover {
+  background-color: #346392;
+  text-shadow: -1px 1px #27496d;
+}
+
+.flat button:active,
+.flat button.active {
+  background-color: #27496d;
+  text-shadow: -1px 1px #193047;
+}

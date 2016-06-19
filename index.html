@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <title>Компліментоген</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+  <h1 class="header">Компліментоген</h1>
+
+  <div id="app"></div>
+
+  <script type="text/babel">
+
+    var epitets = ["прекрасний",
+                   "чудовий",
+                   "розумний",
+                   "сильний",
+                   "крутий",
+                   "мудрий",
+                   "могутній",
+                   "чарівний",
+                   "елегантний",
+                   "неповторний",
+                   "красивий",
+                   "шикарний",
+                   "веселий",
+                   "мрійливий",
+                   "досконалий",
+                   "енергійний"
+                 ];
+
+    function getRandom(min, max){
+      return Math.floor(Math.random() * (max - min) + min);
+    };
+
+    const Component = React.createClass({
+
+      getInitialState: function(){
+        return {message: "",
+                name: "",
+                epitet: "",
+                epitets,
+                bind: {}};
+      },
+
+      handleNameSubmit: function(event){
+        console.log(this.refs.input.value);
+
+        var state = this.state;
+
+        state.name = this.refs.input.value;
+
+        if (!state.bind[state.name]){
+          let rnd = getRandom(0, 12);
+          state.epitet = state.epitets[rnd];
+          state.bind[state.name] = state.epitet;
+          state.message = "Радий тебе бачити ";
+        } else{
+          state.epitet = state.bind[state.name];
+          state.message = "Радий тебе бачити знову, ";
+        }
+        this.setState(state);
+      },
+
+      render: function(){
+        return(
+          <div className="container">
+            <form className="glow flat">
+
+              <input type="text" ref="input" placeholder="Ваше ім'я" />
+
+              <button type="button" onClick={this.handleNameSubmit}>Підтвердити</button>
+
+            </form>
+            <h1 className="header">{this.state.message} {this.state.epitet} {this.state.name}</h1>
+          </div>
+        );
+      }
+    });
+
+    ReactDOM.render(<Component />, document.getElementById('app'));
+
+  </script>
+</body>
+</html>
