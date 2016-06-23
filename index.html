@@ -34,25 +34,29 @@
                    "енергійний"
                  ];
 
+    var initState = {message: "",
+                     name: "",
+                     epitet: "",
+                     epitets,
+                     bind: {}
+                    };
+
     function getRandom(min, max){
       return Math.floor(Math.random() * (max - min) + min);
     };
 
-    const RenderOptimizeMixin = {
-      shouldComponentUpdate(nextProps, nextState){
-        return (nextState.name !== this.state.name) ||
-               (nextState.message !== this.state.message);
-      }
-    }
-
     const Component = React.createClass({
 
       getInitialState: function(){
-        return {message: "",
-                name: "",
-                epitet: "",
-                epitets,
-                bind: {}};
+        if (localStorage.getItem('compliment')){
+          let restoredState = JSON.parse(localStorage.getItem('compliment'));
+          restoredState.message = "";
+          restoredState.name = "";
+          restoredState.epitet = "";
+          return restoredState;
+        } else{
+          return initState;
+        }
       },
 
       handleNameSubmit: function(event){
@@ -72,6 +76,8 @@
           state.message = "Радий тебе бачити знову, ";
         }
         this.setState(state);
+
+        localStorage.setItem('compliment', JSON.stringify(state));
       },
 
       render: function(){
