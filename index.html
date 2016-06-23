@@ -47,12 +47,13 @@
 
     const Component = React.createClass({
 
+      var compName = 'compliment-gen';
+
       getInitialState: function(){
-        if (localStorage.getItem('compliment')){
-          let restoredState = JSON.parse(localStorage.getItem('compliment'));
-          restoredState.message = "";
-          restoredState.name = "";
-          restoredState.epitet = "";
+        if (localStorage.getItem(compName)){
+          let restoredBind = JSON.parse(localStorage.getItem(compName));
+          let restoredState = Object.assign({}, initState);
+          restoredState.bind = restoredBind;
           return restoredState;
         } else{
           return initState;
@@ -77,7 +78,7 @@
         }
         this.setState(state);
 
-        localStorage.setItem('compliment', JSON.stringify(state));
+        localStorage.setItem(compName, JSON.stringify(state.bind));
       },
 
       render: function(){
