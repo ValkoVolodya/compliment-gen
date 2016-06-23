@@ -1,3 +1,3 @@
 # compliment-gen
 
-This project write nice greeting to users, and say pleasant compliments.
+Page that greets the user, and tells him pleasant compliments
