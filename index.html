@@ -38,6 +38,13 @@
       return Math.floor(Math.random() * (max - min) + min);
     };
 
+    const RenderOptimizeMixin = {
+      shouldComponentUpdate(nextProps, nextState){
+        return (nextState.name !== this.state.name) ||
+               (nextState.message !== this.state.message);
+      }
+    }
+
     const Component = React.createClass({
 
       getInitialState: function(){
@@ -51,12 +58,12 @@
       handleNameSubmit: function(event){
         console.log(this.refs.input.value);
 
-        var state = this.state;
+        var state = Object.assign({}, this.state);
 
         state.name = this.refs.input.value;
 
         if (!state.bind[state.name]){
-          let rnd = getRandom(0, 12);
+          let rnd = getRandom(0, 16);
           state.epitet = state.epitets[rnd];
           state.bind[state.name] = state.epitet;
           state.message = "Радий тебе бачити ";
