@@ -44,10 +44,10 @@
     function getRandom(min, max){
       return Math.floor(Math.random() * (max - min) + min);
     };
+    
+    var compName = 'compliment-gen';
 
     const Component = React.createClass({
-
-      var compName = 'compliment-gen',
 
       getInitialState: function(){
         if (localStorage.getItem(compName)){
